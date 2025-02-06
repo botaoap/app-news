@@ -16,6 +16,8 @@ fragmentKtx = "1.8.5"
 
 shimmerVersion = "0.5.0"
 glideVersion = "4.16.0"
+retrofitVersion = "2.9.0"
+koinVersion = "3.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,9 +32,16 @@ androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
+
 facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmerVersion"}
+
 github-bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
 github-bumptech-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
+
+squareup-retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
+squareup-retrofit2-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+
+io-insert-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koinVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -56,6 +56,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.facebook.shimmer)
+
     implementation(libs.github.bumptech.glide)
     annotationProcessor(libs.github.bumptech.glide.compiler)
+
+    implementation(libs.squareup.retrofit2)
+    implementation(libs.squareup.retrofit2.converter)
+
+    implementation(libs.io.insert.koin)
 }
