@@ -56,4 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.facebook.shimmer)
+    implementation(libs.github.bumptech.glide)
+    annotationProcessor(libs.github.bumptech.glide.compiler)
 }

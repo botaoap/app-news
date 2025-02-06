@@ -15,6 +15,7 @@ lifecycleViewmodelKtx = "2.8.7"
 fragmentKtx = "1.8.5"
 
 shimmerVersion = "0.5.0"
+glideVersion = "4.16.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +31,8 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmerVersion"}
+github-bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
+github-bumptech-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
