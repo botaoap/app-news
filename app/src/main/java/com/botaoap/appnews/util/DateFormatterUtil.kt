@@ -7,7 +7,7 @@ fun dateFormatterUtil(dateToFormatter: String) : String? {
     // Input date string
 
     // Parse the input date string
-    val inputFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS'Z'", Locale.getDefault())
+    val inputFormatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
     val date: java.util.Date? = inputFormatter.parse(dateToFormatter)
 
     // Format the date to the desired output format
