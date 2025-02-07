@@ -7,4 +7,7 @@
     <string name="confirm">Confirm</string>
     <string name="error_to_request_api">Error to request api</string>
     <string name="news_empty">News empty</string>
+    <string name="back_to_list">back to list</string>
+    <string name="open_site_of_news">open site of news</string>
+    <string name="news_detail">News detail</string>
 </resources>
