@@ -9,6 +9,6 @@ class RepositoryImpl(
     private val webService: WebService
 ) : Repository {
 
-    override suspend fun getNews(sources: String): Response<NewsListResponse> =
-        webService.getNews(sources)
+    override suspend fun getNews(sources: String?, country: String?): Response<NewsListResponse> =
+        webService.getNews(sources, country)
 }

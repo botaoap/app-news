@@ -6,6 +6,7 @@ import retrofit2.Response
 interface Repository {
 
     suspend fun getNews(
-        sources: String
+        sources: String?,
+        country: String?
     ) : Response<NewsListResponse>
 }

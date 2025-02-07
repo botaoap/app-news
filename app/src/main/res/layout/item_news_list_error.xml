@@ -4,81 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcv_item_card_container"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:elevation="4dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/mcv_item_card_container"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:elevation="4dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="10dp"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_item_news_error_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Error to request api"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <View
-                    android:id="@+id/view_loading_image"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/shape_rounded_12"
-                    android:backgroundTint="@color/gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
-                    android:id="@+id/view_loading_title"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/shape_rounded_12"
-                    android:backgroundTint="@color/gray"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/view_loading_image"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/view_loading_author"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/shape_rounded_12"
-                    android:backgroundTint="@color/gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_loading_title"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <View
-                    android:id="@+id/view_loading_date"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/shape_rounded_12"
-                    android:backgroundTint="@color/gray"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/view_loading_image"
-                    app:layout_constraintTop_toBottomOf="@id/view_loading_title"
-                    app:layout_constraintVertical_bias="1.0" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

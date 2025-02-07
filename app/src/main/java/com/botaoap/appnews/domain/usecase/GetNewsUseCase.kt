@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
 
 interface GetNewsUseCase {
-    fun execute(sources: String): Flow<StatusNewsList>
+    fun execute(sources: String?, country: String?): Flow<NewsListState>
 }
 
 class GetNewsUseCaseImpl(
@@ -18,16 +18,17 @@ class GetNewsUseCaseImpl(
     private val mapper: NewsListMapper,
     private val coroutineDispatcher: CoroutineDispatcher
 ) : GetNewsUseCase {
-    override fun execute(sources: String): Flow<StatusNewsList> = flow {
+    override fun execute(sources: String?, country: String?): Flow<NewsListState> = flow {
         try {
             repository.getNews(
-                sources = sources
+                sources = sources,
+                country = country
             ).let { response ->
                 when (response.code()) {
                     200 -> {
                         response.body()?.let { data ->
                             emit(
-                                StatusNewsList.Success(
+                                NewsListState.Success(
                                     data = mapper.getNewsList(data)
                                 )
                             )
@@ -35,26 +36,26 @@ class GetNewsUseCaseImpl(
                     }
 
                     else -> {
-                        emit(StatusNewsList.Error)
+                        emit(NewsListState.Error)
                     }
                 }
             }
         } catch (e: Exception) {
-            emit(StatusNewsList.Error)
+            emit(NewsListState.Error)
         }
     }
         .onStart {
-            emit(StatusNewsList.Loading)
+            emit(NewsListState.Loading)
         }
         .flowOn(coroutineDispatcher)
 
 }
 
-sealed class StatusNewsList {
-    data object Loading : StatusNewsList()
+sealed class NewsListState {
+    data object Loading : NewsListState()
     data class Success(
         val data: NewsListModel
-    ) : StatusNewsList()
+    ) : NewsListState()
 
-    data object Error : StatusNewsList()
+    data object Error : NewsListState()
 }

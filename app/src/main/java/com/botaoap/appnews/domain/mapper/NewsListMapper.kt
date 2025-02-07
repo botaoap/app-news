@@ -6,20 +6,23 @@ import com.botaoap.appnews.data.remote.response.SourceResponse
 import com.botaoap.appnews.domain.model.ArticlesModel
 import com.botaoap.appnews.domain.model.NewsListModel
 import com.botaoap.appnews.domain.model.SourceModel
+import com.botaoap.appnews.domain.model.StatusNewsListEnum
 import com.botaoap.appnews.util.dateFormatterUtil
 
 class NewsListMapper {
     fun getNewsList(
         response: NewsListResponse
-    ) : NewsListModel =
+    ): NewsListModel =
         NewsListModel(
+            status = StatusNewsListEnum.from(response.status),
             totalResults = response.totalResults,
-            articles = getArticles(response.articles)
+            articles = getArticles(response.status, response.articles)
         )
 
-    private fun getArticles(response: List<ArticlesResponse>) : List<ArticlesModel> =
+    private fun getArticles(status: String, response: List<ArticlesResponse>): List<ArticlesModel> =
         response.map {
             ArticlesModel(
+                status = StatusNewsListEnum.from(status),
                 source = getSource(it.source),
                 author = it.author,
                 title = it.title,
@@ -31,7 +34,7 @@ class NewsListMapper {
             )
         }
 
-    private fun getSource(response: SourceResponse) : SourceModel =
+    private fun getSource(response: SourceResponse): SourceModel =
         SourceModel(
             id = response.id,
             name = response.name

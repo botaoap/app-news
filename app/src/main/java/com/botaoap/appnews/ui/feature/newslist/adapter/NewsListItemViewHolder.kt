@@ -1,24 +1,61 @@
 package com.botaoap.appnews.ui.feature.newslist.adapter
 
+import android.view.View
 import com.botaoap.appnews.R
 import com.botaoap.appnews.databinding.ItemNewsListCardBinding
+import com.botaoap.appnews.domain.model.ACNewsListModel
+import com.botaoap.appnews.domain.model.ArticlesModel
 import com.botaoap.appnews.ui.extension.getImageFromLink
 
 class NewsListItemViewHolder(private val binding: ItemNewsListCardBinding) :
     NewsListViewHolder(binding) {
 
-    override fun bind(data: String) {
-        // TODO: implement glide for image
+    override fun bind(data: ACNewsListModel) {
+        with(data as ArticlesModel) {
+            setupTitle(title)
+            setupImage(urlToImage)
+            setupAuthor(author)
+            setupDate(publishedAt)
+            setupClick()
+        }
+    }
+
+    private fun setupTitle(data: String) {
+        binding.tvItemCardTitle.text = data
+    }
+
+    private fun setupImage(data: String?) {
         binding.ivItemCardImage.getImageFromLink(
-            link = "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/be74/live/9a84f4d0-e486-11ef-90d6-551a5c070155.jpg",
-            imageError = R.drawable.ic_launcher_foreground,
+            link = data ?: "",
+            imageError = R.drawable.ic_image_not_supported,
             centerRadius = 40f,
             strokeWidth = 10f
         )
+    }
 
-        // TODO: implement dynamic text for title
-        // TODO: implement dynamic text for description
-        // TODO: implement click action
+    private fun setupAuthor(data: String?) {
+        binding.tvItemCardAuthor.apply {
+            data?.let {
+                visibility = View.VISIBLE
+                text = it
+            } ?: run {
+                visibility = View.GONE
+            }
+        }
+    }
+
+    private fun setupDate(data: String?) {
+        binding.tvItemCardDate.apply {
+            data?.let {
+                visibility = View.VISIBLE
+                text = it
+            } ?: run {
+                visibility = View.GONE
+            }
+        }
+    }
+
+    private fun setupClick() {
         binding.root.setOnClickListener {
             // TODO: goes to news detail
         }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AppNews</string>
+    <string name="news">News</string>
+    <string name="country_us">Country US</string>
+    <string name="bbc_news">BBC News</string>
+    <string name="choose_the_filter">Choose the filter</string>
+    <string name="confirm">Confirm</string>
 </resources>

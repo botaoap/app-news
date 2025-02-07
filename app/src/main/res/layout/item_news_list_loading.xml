@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/sfl_item_list_loading"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

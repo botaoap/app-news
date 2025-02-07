@@ -12,6 +12,7 @@ interface WebService {
      */
     @GET("v2/top-headlines")
     suspend fun getNews(
-        @Query("sources") sources: String
-    ) : Response<NewsListResponse>
+        @Query("sources") sources: String?,
+        @Query("country") country: String?
+    ): Response<NewsListResponse>
 }

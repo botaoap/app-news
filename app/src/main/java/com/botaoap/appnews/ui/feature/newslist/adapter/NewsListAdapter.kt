@@ -7,8 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import com.botaoap.appnews.databinding.ItemNewsListCardBinding
 import com.botaoap.appnews.databinding.ItemNewsListErrorBinding
 import com.botaoap.appnews.databinding.ItemNewsListLoadingBinding
+import com.botaoap.appnews.domain.model.ACNewsListModel
+import com.botaoap.appnews.domain.model.ArticlesModel
+import com.botaoap.appnews.domain.model.NewsListErrorModel
+import com.botaoap.appnews.domain.model.NewsListLoadingModel
 
-class NewsListAdapter : ListAdapter<String, NewsListViewHolder>(NewsListDiffUtil()) {
+class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsListDiffUtil()) {
 
     companion object {
         private const val CARD_LOADING = 0
@@ -18,8 +22,10 @@ class NewsListAdapter : ListAdapter<String, NewsListViewHolder>(NewsListDiffUtil
 
     override fun getItemViewType(position: Int): Int =
         when (getItem(position)) {
-            "" -> CARD_NEWS
-            else -> CARD_NEWS
+            is NewsListLoadingModel -> CARD_LOADING
+            is ArticlesModel -> CARD_NEWS
+            is NewsListErrorModel -> CARD_ERROR
+            else -> CARD_ERROR
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -65,11 +71,11 @@ class NewsListAdapter : ListAdapter<String, NewsListViewHolder>(NewsListDiffUtil
     }
 }
 
-class NewsListDiffUtil : DiffUtil.ItemCallback<String>() {
-    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
-        oldItem == newItem
+class NewsListDiffUtil : DiffUtil.ItemCallback<ACNewsListModel>() {
+    override fun areItemsTheSame(oldItem: ACNewsListModel, newItem: ACNewsListModel): Boolean =
+        oldItem.status == newItem.status
 
-    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
+    override fun areContentsTheSame(oldItem: ACNewsListModel, newItem: ACNewsListModel): Boolean =
         oldItem == newItem
 
 }
