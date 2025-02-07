@@ -1,5 +1,6 @@
 package com.botaoap.appnews.ui.extension
 
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,8 +16,8 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
 fun ImageView.getImageFromLink(
-    @DrawableRes link: String,
-    imageError: Int,
+    link: String,
+    @DrawableRes imageError: Int,
     centerRadius: Float = 30f,
     strokeWidth: Float = 5f,
     widthLoading: Int = 100,
@@ -53,6 +54,10 @@ fun ImageView.getImageFromLink(
                     target: Target<Drawable>,
                     isFirstResource: Boolean
                 ): Boolean {
+                    val padding = 24
+                    (padding * Resources.getSystem().displayMetrics.density).toInt().let { newPadding ->
+                        setPadding(newPadding,newPadding,newPadding,newPadding)
+                    }
                     return false
                 }
 
