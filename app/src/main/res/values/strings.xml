@@ -5,4 +5,6 @@
     <string name="bbc_news">BBC News</string>
     <string name="choose_the_filter">Choose the filter</string>
     <string name="confirm">Confirm</string>
+    <string name="error_to_request_api">Error to request api</string>
+    <string name="news_empty">News empty</string>
 </resources>
