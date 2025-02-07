@@ -1,5 +1,6 @@
 package com.botaoap.appnews.domain.usecase
 
+import com.botaoap.appnews.data.remote.response.NewsListResponse
 import com.botaoap.appnews.domain.mapper.NewsListMapper
 import com.botaoap.appnews.domain.model.NewsListModel
 import com.botaoap.appnews.domain.repository.Repository
@@ -8,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onStart
+import retrofit2.Response
 
 interface GetNewsUseCase {
     fun execute(sources: String?, country: String?): Flow<NewsListState>
@@ -26,13 +28,7 @@ class GetNewsUseCaseImpl(
             ).let { response ->
                 when (response.code()) {
                     200 -> {
-                        response.body()?.let { data ->
-                            emit(
-                                NewsListState.Success(
-                                    data = mapper.getNewsList(data)
-                                )
-                            )
-                        }
+                        emit(getSuccess(response))
                     }
 
                     else -> {
@@ -49,6 +45,14 @@ class GetNewsUseCaseImpl(
         }
         .flowOn(coroutineDispatcher)
 
+    private fun getSuccess(response: Response<NewsListResponse>): NewsListState =
+        response.body()?.let { data ->
+            when {
+                (data.articles.isEmpty()) -> NewsListState.Empty
+
+                else -> NewsListState.Success(data = mapper.getNewsList(data))
+            }
+        } ?: run { NewsListState.Error }
 }
 
 sealed class NewsListState {
@@ -57,5 +61,6 @@ sealed class NewsListState {
         val data: NewsListModel
     ) : NewsListState()
 
+    data object Empty : NewsListState()
     data object Error : NewsListState()
 }

@@ -1,17 +1,19 @@
 package com.botaoap.appnews.ui.feature.newslist.view
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.withCreated
 import com.botaoap.appnews.R
-import com.botaoap.appnews.data.contants.Constants
 import com.botaoap.appnews.databinding.FragmentNewsListBinding
+import com.botaoap.appnews.ui.MainActivityListener
+import com.botaoap.appnews.ui.feature.newsdetail.view.NewsDetailFragment
 import com.botaoap.appnews.ui.feature.newslist.adapter.NewsListAdapter
 import com.botaoap.appnews.ui.feature.newslist.uistate.NewsListUIState
 import com.botaoap.appnews.ui.feature.newslist.uistate.RefreshNewsListUIState
@@ -22,17 +24,32 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsListFragment : Fragment(R.layout.fragment_news_list) {
 
+    private lateinit var mainActivityListener: MainActivityListener
+
     private var _binding: FragmentNewsListBinding? = null
     private val binding get() = _binding!!
 
     private val newsListViewModel: NewsListViewModel by viewModel()
 
     private val adapter: NewsListAdapter by lazy {
-        NewsListAdapter()
+        NewsListAdapter(
+            onClick = { data ->
+                mainActivityListener.startFragment(
+                    NewsDetailFragment.newInstance(),
+                    "NewsDetailFragment"
+                )
+            }
+        )
     }
 
     companion object {
         fun newInstance() = NewsListFragment()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        context as MainActivityListener
+        mainActivityListener = context
     }
 
     override fun onCreateView(
@@ -60,10 +77,7 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
     private fun initObservables() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.withCreated {
-                newsListViewModel.selectFilter(
-                    sources = Constants.Path.BBC_NEWS,
-                    country = null
-                )
+                newsListViewModel.getNewsList()
             }
         }
 
@@ -71,9 +85,9 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
             when (state) {
                 is NewsListUIState.Loading -> adapter.submitList(state.data)
 
-                is NewsListUIState.Success -> {
-                    adapter.submitList(state.data.articles)
-                }
+                is NewsListUIState.Success -> adapter.submitList(state.data.articles)
+
+                is NewsListUIState.Empty -> adapter.submitList(state.data)
 
                 is NewsListUIState.Error -> adapter.submitList(state.data)
             }

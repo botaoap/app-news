@@ -1,5 +1,6 @@
 package com.botaoap.appnews.ui.feature.newslist.uistate
 
+import com.botaoap.appnews.domain.model.NewsListEmptyModel
 import com.botaoap.appnews.domain.model.NewsListErrorModel
 import com.botaoap.appnews.domain.model.NewsListLoadingModel
 import com.botaoap.appnews.domain.model.NewsListModel
@@ -10,6 +11,10 @@ sealed class NewsListUIState {
     ) : NewsListUIState()
     data class Success(
         val data: NewsListModel
+    ) : NewsListUIState()
+
+    data class Empty(
+        val data: List<NewsListEmptyModel>
     ) : NewsListUIState()
 
     data class Error(

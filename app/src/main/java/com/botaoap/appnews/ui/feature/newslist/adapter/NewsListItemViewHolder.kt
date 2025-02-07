@@ -7,7 +7,10 @@ import com.botaoap.appnews.domain.model.ACNewsListModel
 import com.botaoap.appnews.domain.model.ArticlesModel
 import com.botaoap.appnews.ui.extension.getImageFromLink
 
-class NewsListItemViewHolder(private val binding: ItemNewsListCardBinding) :
+class NewsListItemViewHolder(
+    private val binding: ItemNewsListCardBinding,
+    private val onClick: (data: ArticlesModel) -> Unit
+) :
     NewsListViewHolder(binding) {
 
     override fun bind(data: ACNewsListModel) {
@@ -16,7 +19,7 @@ class NewsListItemViewHolder(private val binding: ItemNewsListCardBinding) :
             setupImage(urlToImage)
             setupAuthor(author)
             setupDate(publishedAt)
-            setupClick()
+            setupClick(this)
         }
     }
 
@@ -55,9 +58,9 @@ class NewsListItemViewHolder(private val binding: ItemNewsListCardBinding) :
         }
     }
 
-    private fun setupClick() {
-        binding.root.setOnClickListener {
-            // TODO: goes to news detail
+    private fun setupClick(data: ArticlesModel) {
+        binding.mcvItemCardContainer.setOnClickListener {
+            onClick.invoke(data)
         }
     }
 }

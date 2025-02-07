@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.botaoap.appnews.data.contants.Constants
+import com.botaoap.appnews.domain.model.NewsListEmptyModel
 import com.botaoap.appnews.domain.model.NewsListErrorModel
 import com.botaoap.appnews.domain.model.NewsListLoadingModel
 import com.botaoap.appnews.domain.usecase.GetNewsUseCase
@@ -45,8 +47,8 @@ class NewsListViewModel(
     fun getNewsList() {
         viewModelScope.launch {
             getNewsUseCase.execute(
-                sources = storeSources,
-                country = storeCountry
+                sources = verifyDataSources(),
+                country = verifyDataCountry()
             ).collect { state ->
                 when (state) {
                     NewsListState.Loading -> {
@@ -67,13 +69,20 @@ class NewsListViewModel(
                         )
                     }
 
+                    NewsListState.Empty -> {
+                        refreshUIState.value = RefreshNewsListUIState.Enable
+                        newsListUIState.postValue(
+                            NewsListUIState.Empty(
+                                listOf(NewsListEmptyModel())
+                            )
+                        )
+                    }
+
                     NewsListState.Error -> {
                         refreshUIState.value = RefreshNewsListUIState.Enable
                         newsListUIState.postValue(
                             NewsListUIState.Error(
-                                listOf(
-                                    NewsListErrorModel()
-                                )
+                                listOf(NewsListErrorModel())
                             )
                         )
                     }
@@ -82,4 +91,20 @@ class NewsListViewModel(
             }
         }
     }
+
+    private fun verifyDataSources(): String? =
+        if (storeSources == null && storeCountry == null) {
+            Constants.Path.BBC_NEWS
+        } else {
+            storeSources
+        }
+
+    private fun verifyDataCountry(): String? =
+        if (storeSources == null && storeCountry == null) {
+            null
+        } else if (storeSources == null) {
+            storeCountry
+        } else {
+            null
+        }
 }

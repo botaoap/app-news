@@ -5,19 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.botaoap.appnews.databinding.ItemNewsListCardBinding
+import com.botaoap.appnews.databinding.ItemNewsListEmptyBinding
 import com.botaoap.appnews.databinding.ItemNewsListErrorBinding
 import com.botaoap.appnews.databinding.ItemNewsListLoadingBinding
 import com.botaoap.appnews.domain.model.ACNewsListModel
 import com.botaoap.appnews.domain.model.ArticlesModel
+import com.botaoap.appnews.domain.model.NewsListEmptyModel
 import com.botaoap.appnews.domain.model.NewsListErrorModel
 import com.botaoap.appnews.domain.model.NewsListLoadingModel
 
-class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsListDiffUtil()) {
+class NewsListAdapter(
+    private val onClick: (data: ArticlesModel) -> Unit
+) : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsListDiffUtil()) {
 
     companion object {
         private const val CARD_LOADING = 0
         private const val CARD_NEWS = 1
         private const val CARD_ERROR = 2
+        private const val CARD_EMPTY = 3
     }
 
     override fun getItemViewType(position: Int): Int =
@@ -25,6 +30,7 @@ class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsLis
             is NewsListLoadingModel -> CARD_LOADING
             is ArticlesModel -> CARD_NEWS
             is NewsListErrorModel -> CARD_ERROR
+            is NewsListEmptyModel -> CARD_EMPTY
             else -> CARD_ERROR
         }
 
@@ -32,6 +38,7 @@ class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsLis
         when (viewType) {
             CARD_NEWS -> NewsListItemViewHolder(
                 ItemNewsListCardBinding.inflate(LayoutInflater.from(parent.context), parent, false),
+                onClick
             )
 
             CARD_LOADING -> NewsListLoadingViewHolder(
@@ -50,6 +57,14 @@ class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsLis
                 ),
             )
 
+            CARD_EMPTY -> NewsListEmptyViewHolder(
+                ItemNewsListEmptyBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+
             else -> NewsListErrorViewHolder(
                 ItemNewsListErrorBinding.inflate(
                     LayoutInflater.from(parent.context),
@@ -65,6 +80,7 @@ class NewsListAdapter : ListAdapter<ACNewsListModel, NewsListViewHolder>(NewsLis
                 CARD_NEWS -> (holder as NewsListItemViewHolder).apply { bind(item) }
                 CARD_LOADING -> (holder as NewsListLoadingViewHolder).apply { bind(item) }
                 CARD_ERROR -> (holder as NewsListErrorViewHolder).apply { bind(item) }
+                CARD_EMPTY -> (holder as NewsListEmptyViewHolder).apply { bind(item) }
                 else -> (holder as NewsListErrorViewHolder).apply { bind(item) }
             }
         }

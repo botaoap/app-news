@@ -46,9 +46,14 @@ data class NewsListErrorModel(
     override val status: StatusNewsListEnum = StatusNewsListEnum.ERROR
 ) : ACNewsListModel()
 
+data class NewsListEmptyModel(
+    override val status: StatusNewsListEnum = StatusNewsListEnum.EMPTY
+) : ACNewsListModel()
+
 enum class StatusNewsListEnum(val key: String) {
     OK("ok"),
     LOADING("loading"),
+    EMPTY("empty"),
     ERROR("error");
 
     companion object {
