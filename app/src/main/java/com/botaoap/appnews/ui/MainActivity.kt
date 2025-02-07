@@ -11,6 +11,7 @@ import com.botaoap.appnews.ui.feature.newslist.view.NewsListFragment
 
 interface MainActivityListener {
     fun startFragment(fragment: Fragment)
+    fun startFragment(fragment: Fragment, nameFragment: String)
 }
 
 class MainActivity : AppCompatActivity(), MainActivityListener {
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
     override fun startFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_main_container, fragment)
+        }.commit()
+    }
+
+    override fun startFragment(fragment: Fragment, nameFragment: String) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fl_main_container, fragment)
+            addToBackStack(nameFragment)
         }.commit()
     }
 }
