@@ -1,6 +1,6 @@
 package com.botaoap.appnews.data.remote.api
 
-import com.botaoap.appnews.data.remote.response.NewsResponse
+import com.botaoap.appnews.data.remote.response.NewsListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,6 +12,6 @@ interface WebService {
      */
     @GET("v2/top-headlines")
     suspend fun getNews(
-        @Query("sources") sources: String,
-    ) : Response<NewsResponse>
+        @Query("sources") sources: String
+    ) : Response<NewsListResponse>
 }
