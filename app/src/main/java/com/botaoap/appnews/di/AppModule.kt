@@ -4,10 +4,12 @@ import com.botaoap.appnews.data.remote.api.WebService
 import com.botaoap.appnews.data.remote.network.WebServiceImpl
 import com.botaoap.appnews.data.repository.RepositoryImpl
 import com.botaoap.appnews.domain.mapper.NewsListMapper
+import com.botaoap.appnews.domain.model.ArticlesModel
 import com.botaoap.appnews.domain.repository.Repository
 import com.botaoap.appnews.domain.usecase.GetNewsUseCase
 import com.botaoap.appnews.domain.usecase.GetNewsUseCaseImpl
 import com.botaoap.appnews.service.KoinIdentifier
+import com.botaoap.appnews.ui.feature.newsdetail.viewmodel.NewsDetailViewModel
 import com.botaoap.appnews.ui.feature.newslist.viewmodel.NewsListViewModel
 import kotlinx.coroutines.Dispatchers
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -55,6 +57,11 @@ object AppModule {
     private fun getViewModelModule(module: Module) {
         with(module) {
             viewModel { NewsListViewModel(get()) }
+            viewModel { (
+                            data: ArticlesModel
+                        ) ->
+                NewsDetailViewModel(data)
+            }
         }
     }
 }
