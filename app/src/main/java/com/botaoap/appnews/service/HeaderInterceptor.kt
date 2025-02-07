@@ -8,8 +8,7 @@ class HeaderInterceptor : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
         val newRequest = originalRequest.newBuilder()
-            .addHeader("Authorization", "Bearer ${ApiKey.API_KEY_TOKEN}")
-            .addHeader("Accept", "application/json")
+            .addHeader("X-Api-Key", ApiKey.API_KEY_TOKEN)
             .build()
         return chain.proceed(newRequest)
     }
