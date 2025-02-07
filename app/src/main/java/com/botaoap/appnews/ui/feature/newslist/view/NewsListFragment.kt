@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.withCreated
 import com.botaoap.appnews.R
+import com.botaoap.appnews.data.contants.Constants
 import com.botaoap.appnews.databinding.FragmentNewsListBinding
 import com.botaoap.appnews.ui.feature.newslist.adapter.NewsListAdapter
 import com.botaoap.appnews.ui.feature.newslist.uistate.NewsListUIState
@@ -60,7 +61,7 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.withCreated {
                 newsListViewModel.selectFilter(
-                    sources = "bbc-news",
+                    sources = Constants.Path.BBC_NEWS,
                     country = null
                 )
             }

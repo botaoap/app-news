@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.botaoap.appnews.data.contants.Constants
 import com.botaoap.appnews.databinding.DialogNewsListFilterBinding
 
 class NewsListFilterDialog(context: Context) {
@@ -48,9 +49,9 @@ class NewsListFilterDialog(context: Context) {
     private fun confirmChoose(onClick: (sources: String?, country: String?) -> Unit) {
         binding.mbNewsListFilterConfirm.setOnClickListener {
             if (binding.mrbNewsListFilterPrimary.isChecked) {
-                onClick.invoke("bbc-news", null)
+                onClick.invoke(Constants.Path.BBC_NEWS, null)
             } else {
-                onClick.invoke(null, "us")
+                onClick.invoke(null, Constants.Path.COUNTRY_US)
             }
         }
     }
