@@ -10,7 +10,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.withCreated
-import com.botaoap.appnews.R
 import com.botaoap.appnews.databinding.FragmentNewsListBinding
 import com.botaoap.appnews.ui.MainActivityListener
 import com.botaoap.appnews.ui.feature.newsdetail.view.NewsDetailFragment
@@ -22,7 +21,7 @@ import com.botaoap.appnews.ui.feature.newslist.viewmodel.NewsListViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NewsListFragment : Fragment(R.layout.fragment_news_list) {
+class NewsListFragment : Fragment() {
 
     private lateinit var mainActivityListener: MainActivityListener
 
@@ -35,7 +34,7 @@ class NewsListFragment : Fragment(R.layout.fragment_news_list) {
         NewsListAdapter(
             onClick = { data ->
                 mainActivityListener.startFragment(
-                    NewsDetailFragment.newInstance(),
+                    NewsDetailFragment.newInstance(data = data),
                     "NewsDetailFragment"
                 )
             }

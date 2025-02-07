@@ -1,5 +1,8 @@
 package com.botaoap.appnews.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 abstract class ACNewsListModel {
     abstract val status: StatusNewsListEnum
 
@@ -21,6 +24,7 @@ data class NewsListModel(
     val articles: List<ArticlesModel>
 ) : ACNewsListModel()
 
+@Parcelize
 data class ArticlesModel(
     override val status: StatusNewsListEnum,
     val source: SourceModel,
@@ -31,12 +35,13 @@ data class ArticlesModel(
     val url: String,
     val urlToImage: String?,
     val publishedAt: String?,
-) : ACNewsListModel()
+) : ACNewsListModel(), Parcelable
 
+@Parcelize
 data class SourceModel(
     val id: String?,
     val name: String
-)
+) : Parcelable
 
 data class NewsListLoadingModel(
     override val status: StatusNewsListEnum = StatusNewsListEnum.LOADING
