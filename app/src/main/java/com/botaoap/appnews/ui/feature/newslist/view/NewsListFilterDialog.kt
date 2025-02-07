@@ -2,15 +2,18 @@ package com.botaoap.appnews.ui.feature.newslist.view
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import com.botaoap.appnews.R
 import com.botaoap.appnews.data.contants.Constants
 import com.botaoap.appnews.databinding.DialogNewsListFilterBinding
 
-class NewsListFilterDialog(context: Context) {
+class NewsListFilterDialog(private val context: Context) {
 
     private val binding =
         DialogNewsListFilterBinding.inflate(LayoutInflater.from(context))
@@ -54,5 +57,10 @@ class NewsListFilterDialog(context: Context) {
                 onClick.invoke(null, Constants.Path.COUNTRY_US)
             }
         }
+        binding.mrbNewsListFilterPrimary.buttonTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(context, R.color.black))
+
+        binding.mrbNewsListFilterSecondary.buttonTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(context, R.color.black))
     }
 }
