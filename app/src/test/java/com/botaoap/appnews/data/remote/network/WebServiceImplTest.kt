@@ -28,6 +28,9 @@ class WebServiceImplTest {
         mockServer.shutdown()
     }
 
+    /**
+     * Getting issue with HTTP FAILED: javax.net.ssl.SSLHandshakeException
+     */
     @Test
     fun `should return correct response when status 200`() = runTest {
         // Arrange
