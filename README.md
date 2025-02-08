@@ -76,6 +76,7 @@ cd app-news
 To fetch data from the NewsAPI, you need to create your own API key. Here's how you can do it:
 
 #### Go to the NewsAPI website.
+- Site [here](https://newsapi.org)
 - Sign up for an account (or log in if you already have one).
 - Once logged in, navigate to the API Keys section and generate a new key.
 
