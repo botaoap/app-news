@@ -41,28 +41,6 @@ Use flavors to support two different news providers.
 - Internet connection for fetching news data
 - A physical or virtual Android device with API level 21 or higher
 
-## Technologies Used:
-- This project utilizes the following libraries and frameworks:
-- Shimmer: For loading placeholders
-- Glide: For image loading and caching
-- Retrofit: For making API requests
-- OkHttp: For handling network requests
-- Koin: For dependency injection
-- Mockito: For mocking dependencies in tests
-- Mockk: For Kotlin-specific mocking
-- Coroutines Unit Test: For testing coroutine-based code
-- ViewModel Unit Test: For testing ViewModel logic
-- OkHttp Unit Test: For testing network interactions
-
-## Architecture:
-- This project follows the MVVM (Model-View-ViewModel) architecture, ensuring a clear separation of concerns and maintainability. The main layers include:
-- UI Layer: Handles user interactions and displays data.
-- ViewModel Layer: Manages UI-related data and business logic.
-- Domain Layer: Contains use cases and business rules.
-- Data Layer: Manages API requests and local data storage.
-- Service Layer: Handles API communication using Retrofit and OkHttp.
-- Dependency Injection (DI) Layer: Uses Koin for dependency management.
-
 ## Get Started
 Follow the steps below to get the project up and running on your local machine.
 
@@ -98,6 +76,28 @@ Once the API key is in place, you should be able to build and run the project lo
 - Open the project in Android Studio.
 - Make sure that your Android environment is properly set up (e.g., the required SDK version, Android Emulator, or a physical device).
 - Build and run the project either on the emulator or a physical device.
+
+## Technologies Used:
+- This project utilizes the following libraries and frameworks:
+- Shimmer: For loading placeholders
+- Glide: For image loading and caching
+- Retrofit: For making API requests
+- OkHttp: For handling network requests
+- Koin: For dependency injection
+- Mockito: For mocking dependencies in tests
+- Mockk: For Kotlin-specific mocking
+- Coroutines Unit Test: For testing coroutine-based code
+- ViewModel Unit Test: For testing ViewModel logic
+- OkHttp Unit Test: For testing network interactions
+
+## Architecture:
+- This project follows the MVVM (Model-View-ViewModel) architecture, ensuring a clear separation of concerns and maintainability. The main layers include:
+- UI Layer: Handles user interactions and displays data.
+- ViewModel Layer: Manages UI-related data and business logic.
+- Domain Layer: Contains use cases and business rules.
+- Data Layer: Manages API requests and local data storage.
+- Service Layer: Handles API communication using Retrofit and OkHttp.
+- Dependency Injection (DI) Layer: Uses Koin for dependency management.
 
 ## Unit Tests
 Unit tests are created for the following layers:
