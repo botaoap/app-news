@@ -6,11 +6,9 @@
 </div>
 
 ## About the Challenge:
-
 Given the short deadline, prioritize quality. Even if you cannot complete all the requirements, deliver what you can in the most polished way possible.
 
 ## Requirements:
-
 - You must create a news app to display the top headlines from BBC News (bbc-news).
 - API Documentation: NewsAPI Top Headlines
 - Do not spend too much time on complex layouts, but the app must support different screen sizes and orientations.
@@ -28,15 +26,12 @@ Given the short deadline, prioritize quality. Even if you cannot complete all th
 - Image, title, and description (if available).
 
 ## Delivery:
-
 The challenge can be submitted via GitHub, Bitbucket, or similar platforms.
 
 ### Bonus:
-
 Use flavors to support two different news providers.
 
 ## Prerequisites:
-
 - Before building and running this project, ensure you have the following installed and set up:
 - Android Studio (latest stable version recommended)
 - Android SDK and required dependencies
@@ -47,7 +42,6 @@ Use flavors to support two different news providers.
 - A physical or virtual Android device with API level 21 or higher
 
 ## Technologies Used:
-
 - This project utilizes the following libraries and frameworks:
 - Shimmer: For loading placeholders
 - Glide: For image loading and caching
@@ -61,7 +55,6 @@ Use flavors to support two different news providers.
 - OkHttp Unit Test: For testing network interactions
 
 ## Architecture:
-
 - This project follows the MVVM (Model-View-ViewModel) architecture, ensuring a clear separation of concerns and maintainability. The main layers include:
 - UI Layer: Handles user interactions and displays data.
 - ViewModel Layer: Manages UI-related data and business logic.
@@ -104,3 +97,14 @@ Once the API key is in place, you should be able to build and run the project lo
 - Open the project in Android Studio.
 - Make sure that your Android environment is properly set up (e.g., the required SDK version, Android Emulator, or a physical device).
 - Build and run the project either on the emulator or a physical device.
+
+## Unit Tests
+Unit tests are created for the following layers:
+- Web Service
+- Repository
+- Use case
+- Mapper
+- ViewModel
+
+## Contact
+For any questions or suggestions, please contact gabrielbotao@gmail.com
