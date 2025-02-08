@@ -14,11 +14,17 @@ lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 fragmentKtx = "1.8.5"
 
-shimmerVersion = "0.5.0"
-glideVersion = "4.16.0"
-retrofitVersion = "2.9.0"
-koinVersion = "3.5.0"
-okhttpVersion = "4.10.0"
+shimmer = "0.5.0"
+glide = "4.16.0"
+retrofit = "2.9.0"
+koin = "3.5.0"
+okhttp = "4.10.0"
+mockito = "5.2.0"
+mockitoKotlin = "4.1.0"
+coroutinesTest = "1.7.1"
+coreTest = "2.2.0"
+mockwebserver = "4.12.0"
+mockk = "1.13.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,17 +40,39 @@ androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecy
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
 
-facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmerVersion"}
+# Shimmer
+facebook-shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 
-github-bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glideVersion" }
-github-bumptech-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glideVersion" }
+# Glide
+github-bumptech-glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+github-bumptech-glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 
-squareup-retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVersion" }
-squareup-retrofit2-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVersion" }
+# Retrofit
+squareup-retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+squareup-retrofit2-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 
-squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpVersion" }
+# Okhttp
+squareup-okhttp3 = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 
-io-insert-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koinVersion" }
+# Koin
+io-insert-koin = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+
+# Mockito
+org-mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+org-mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+
+# Coroutines unit test
+org-jetbrains-kotlinx = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+
+# ViewModel unit test
+androidx-arch-core = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTest" }
+
+# Okhttp unit test
+com-squareup-okhttp3-test = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockwebserver" }
+
+# Mockk
+io-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

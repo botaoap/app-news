@@ -67,4 +67,15 @@ dependencies {
     implementation(libs.squareup.okhttp3)
 
     implementation(libs.io.insert.koin)
+
+    testImplementation(libs.org.mockito.core)
+    testImplementation(libs.org.mockito.kotlin)
+
+    testImplementation(libs.org.jetbrains.kotlinx)
+
+    testImplementation(libs.androidx.arch.core)
+
+    testImplementation(libs.com.squareup.okhttp3.test)
+
+    testImplementation(libs.io.mockk)
 }
