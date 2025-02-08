@@ -10,7 +10,7 @@ Given the short deadline, prioritize quality. Even if you cannot complete all th
 
 ## Requirements:
 - You must create a news app to display the top headlines from BBC News (bbc-news).
-- API Documentation: NewsAPI Top Headlines
+- API Documentation: [NewsAPI Top Headlines](https://newsapi.org/docs/endpoints/top-headlines)
 - Do not spend too much time on complex layouts, but the app must support different screen sizes and orientations.
 - The app must be written in Kotlin (preferably) or Java.
 - The app must include unit tests.
