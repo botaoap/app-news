@@ -77,6 +77,12 @@ Once the API key is in place, you should be able to build and run the project lo
 - Make sure that your Android environment is properly set up (e.g., the required SDK version, Android Emulator, or a physical device).
 - Build and run the project either on the emulator or a physical device.
 
+## About Layout
+<p align="center">
+<img width="363" alt="Screenshot 2025-02-08 at 17 51 57" src="https://github.com/user-attachments/assets/35442a46-3e72-4be1-b837-4b5852d9c07b" />
+<img width="363" alt="Screenshot 2025-02-08 at 17 52 08" src="https://github.com/user-attachments/assets/872802d7-074d-473a-ae34-bd29a89c99c6" />
+</p>
+
 ## Technologies Used:
 - This project utilizes the following libraries and frameworks:
 - Shimmer: For loading placeholders
