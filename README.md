@@ -69,3 +69,38 @@ Use flavors to support two different news providers.
 - Data Layer: Manages API requests and local data storage.
 - Service Layer: Handles API communication using Retrofit and OkHttp.
 - Dependency Injection (DI) Layer: Uses Koin for dependency management.
+
+## Get Started
+Follow the steps below to get the project up and running on your local machine.
+
+### 1. Clone the Project
+```sh
+git clone https://github.com/botaoap/app-news.git
+cd app-news
+```
+
+### 2. Create Your Own API Key
+To fetch data from the NewsAPI, you need to create your own API key. Here's how you can do it:
+
+#### Go to the NewsAPI website.
+- Sign up for an account (or log in if you already have one).
+- Once logged in, navigate to the API Keys section and generate a new key.
+
+### 3. Add Your API Key to the Project
+In order to build and run the app locally, you need to add your API key to the project.
+
+- Locate the file called ApiKey.kt inside the config or resources folder (depending on your project structure).
+- Replace the placeholder with your own API key in the file. It should look like this:
+
+```sh
+const val API_KEY = "your-api-key-here"
+```
+
+- Make sure that your API key is securely added and not exposed in public repositories.
+
+### 4. Build and Run the Project
+Once the API key is in place, you should be able to build and run the project locally using Android Studio.
+
+- Open the project in Android Studio.
+- Make sure that your Android environment is properly set up (e.g., the required SDK version, Android Emulator, or a physical device).
+- Build and run the project either on the emulator or a physical device.
