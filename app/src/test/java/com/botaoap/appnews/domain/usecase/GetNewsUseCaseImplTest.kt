@@ -12,9 +12,12 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.ResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
+import org.mockito.kotlin.any
 import retrofit2.Response
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -36,10 +39,10 @@ class GetNewsUseCaseImplTest {
     }
 
     @Test
-    fun `should return success`() = runTest {
+    fun `should return success when request`() = runTest {
         // Arrange
         newsListResponse = mockk(relaxed = true)
-        articlesResponse = mockk()
+        articlesResponse = mockk(relaxed = true)
         newsListModel = mockk()
 
         val response: Response<NewsListResponse> = Response.success(mockk())
@@ -47,7 +50,7 @@ class GetNewsUseCaseImplTest {
         coEvery { repository.getNews("bbc-news", null) } returns response
         coEvery { response.body()?.articles } returns articlesResponse
         coEvery { response.body()?.copy() } returns newsListResponse
-        coEvery { mapper.getNewsList(newsListResponse) } returns newsListModel
+        coEvery { mapper.getNewsList(any()) } returns newsListModel
 
         // Act
         val act = useCase.execute("bbc-news", null).toList()
@@ -56,6 +59,56 @@ class GetNewsUseCaseImplTest {
         val expected = listOf(
             NewsListState.Loading,
             NewsListState.Success(newsListModel)
+        )
+
+        assertEquals(expected, act)
+    }
+
+    @Test
+    fun `should return empty state when status code is 200`() = runTest {
+        // Arrange
+        newsListResponse = mockk(relaxed = true)
+        articlesResponse = mockk(relaxed = true)
+        newsListModel = mockk()
+
+        val response: Response<NewsListResponse> = Response.success(mockk())
+
+        coEvery { repository.getNews("bbc-news", null) } returns response
+        coEvery { response.body()?.articles } returns listOf()
+        coEvery { response.body()?.copy() } returns newsListResponse
+        coEvery { mapper.getNewsList(any()) } returns newsListModel
+
+        // Act
+        val act = useCase.execute("bbc-news", null).toList()
+
+        // Assert
+        val expected = listOf(
+            NewsListState.Loading,
+            NewsListState.Empty
+        )
+
+        assertEquals(expected, act)
+    }
+
+    @Test
+    fun `should return error when status code is not 200`() = runTest {
+        // Arrange
+        val errorBody: ResponseBody = mockk {
+            every { contentType() } returns "application.json".toMediaTypeOrNull()
+            every { contentLength() } returns 0L
+            every { string() } returns "{}"
+        }
+        val response: Response<NewsListResponse> = Response.error(501, errorBody)
+
+        coEvery { repository.getNews(any(), any()) } returns response
+
+        // Act
+        val act = useCase.execute(any(), any()).toList()
+
+        // Assert
+        val expected = listOf(
+            NewsListState.Loading,
+            NewsListState.Error
         )
 
         assertEquals(expected, act)
