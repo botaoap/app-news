@@ -77,14 +77,15 @@
             android:layout_marginHorizontal="16dp"
             android:fontFamily="sans-serif-medium"
             android:padding="4dp"
-            android:text="Faltam R$ 300,00 para receber seu auxílio. Pague suas dívidas para completar e receber!"
             android:textSize="18sp"
             android:textStyle="normal"
             app:layout_constrainedHeight="true"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cl_debt_support_header_container" />
+            app:layout_constraintTop_toBottomOf="@id/cl_debt_support_header_container"
+            tools:text="Faltam muitos dias para fechar o ano" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/lpi_debt_support_footer_progress"
@@ -118,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:padding="4dp"
-                android:text="Auxílio Dívida - A Serasa paga uma dívida para você!"
+                android:text="Ja estamos contando os dias para as ferias"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -134,13 +135,13 @@
                 android:layout_marginTop="4dp"
                 android:fontFamily="sans-serif-medium"
                 android:padding="4dp"
-                android:text="Pague uma ou mais dívidas cujo valor total seja igual ou maior que R$ 300,00 e aproveite esse empurrãozinho para melhorar seu Score!"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_debt_support_footer_section_hide_title" />
+                app:layout_constraintTop_toBottomOf="@id/tv_debt_support_footer_section_hide_title"
+                tools:text="Reserve um dinheiro todo mes para gastar no final do ano para viajar com tranquilidade" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

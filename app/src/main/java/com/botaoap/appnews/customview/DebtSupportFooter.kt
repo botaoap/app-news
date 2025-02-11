@@ -6,12 +6,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.text.parseAsHtml
 import androidx.core.view.isVisible
-import androidx.core.view.marginBottom
-import androidx.core.view.setMargins
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.botaoap.appnews.R
 import com.botaoap.appnews.databinding.ViewDebtSupportFooterBinding
