@@ -9,6 +9,7 @@ sealed class NewsListUIState {
     data class Loading(
         val data: List<NewsListLoadingModel>
     ) : NewsListUIState()
+
     data class Success(
         val data: NewsListModel
     ) : NewsListUIState()
@@ -32,4 +33,10 @@ sealed class SelectFilterUIState {
         val sources: String?,
         val country: String?
     ) : SelectFilterUIState()
+}
+
+sealed class ShowFooterUIState {
+    data object Hidde : ShowFooterUIState()
+    data object Invisible : ShowFooterUIState()
+    data object Show : ShowFooterUIState()
 }

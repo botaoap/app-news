@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mcv_debt_support_footer_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:minWidth="10dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardElevation="4dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_debt_support_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_debt_support_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="
+            cl_debt_support_header_container,
+            tv_debt_support_footer_description,
+            lpi_debt_support_footer_progress,
+            cl_debt_support_footer_section_hide_container" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_debt_support_header_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/stb_debt_support_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_down" />
+
+            <TextView
+                android:id="@+id/tv_debt_support_footer_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:padding="4dp"
+                android:text="Saiba mais"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/stb_debt_support_arrow"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_debt_support_footer_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:padding="4dp"
+            android:text="Faltam R$ 300,00 para receber seu auxílio. Pague suas dívidas para completar e receber!"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_debt_support_header_container" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/lpi_debt_support_footer_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:indeterminateAnimationType="disjoint"
+            app:indicatorColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/cl_debt_support_footer_section_hide_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_debt_support_footer_description"
+            app:trackColor="@color/white"
+            app:trackCornerRadius="8dp"
+            tools:progress="50" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_debt_support_footer_section_hide_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lpi_debt_support_footer_progress">
+
+            <TextView
+                android:id="@+id/tv_debt_support_footer_section_hide_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:padding="4dp"
+                android:text="Auxílio Dívida - A Serasa paga uma dívida para você!"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_debt_support_footer_section_hide_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:padding="4dp"
+                android:text="Pague uma ou mais dívidas cujo valor total seja igual ou maior que R$ 300,00 e aproveite esse empurrãozinho para melhorar seu Score!"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_debt_support_footer_section_hide_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

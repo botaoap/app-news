@@ -36,10 +36,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="?android:selectableItemBackgroundBorderless"
+            android:contentDescription="@string/choose_the_filter"
+            android:importantForAccessibility="yes"
             android:padding="8dp"
             android:scaleType="fitCenter"
-            android:importantForAccessibility="yes"
-            android:contentDescription="@string/choose_the_filter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +52,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dsf_lno_home_offers_debt_footer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_news_list_header_page">
@@ -61,6 +61,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fillViewport="true"
+            android:background="@color/athens_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,5 +91,16 @@
         </androidx.core.widget.NestedScrollView>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.botaoap.appnews.customview.DebtSupportFooter
+        android:id="@+id/dsf_lno_home_offers_debt_footer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:description="Faltam R$ 300,00 para receber seu auxílio. Pague suas dívidas para completar e receber!"
+        tools:progressBarStyle="30"
+        tools:title="Saiba mais" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

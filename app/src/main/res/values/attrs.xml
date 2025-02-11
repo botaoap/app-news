@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="title" format="reference|string" />
+    <attr name="description" format="reference|string" />
+    <attr name="outlineStrokeColor" format="color" />
+
+    <declare-styleable name="DebtSupportFooterDetail">
+        <attr name="title" />
+        <attr name="description" />
+        <attr name="progressBarStyle"/>
+        <attr name="backgroundColor"/>
+        <attr name="outlineStrokeColor" />
+    </declare-styleable>
+
+</resources>

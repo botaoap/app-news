@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/open_in_new/baseline_open_in_new_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/keyboard_arrow_down/baseline_keyboard_arrow_down_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,7 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_open_in_new" />
+                            <entry key="outputName" value="ic_arrow_down" />
                           </map>
                         </option>
                       </PersistentState>

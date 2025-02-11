@@ -1,25 +1,37 @@
 package com.botaoap.appnews.ui.feature.newslist.view
 
+import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.withCreated
+import com.botaoap.appnews.R
+import com.botaoap.appnews.customview.DebtSupportModel
+import com.botaoap.appnews.customview.SectionHideModel
 import com.botaoap.appnews.databinding.FragmentNewsListBinding
 import com.botaoap.appnews.ui.MainActivityListener
+import com.botaoap.appnews.ui.extension.collapse
+import com.botaoap.appnews.ui.extension.expand
 import com.botaoap.appnews.ui.feature.newsdetail.view.NewsDetailFragment
 import com.botaoap.appnews.ui.feature.newslist.adapter.NewsListAdapter
 import com.botaoap.appnews.ui.feature.newslist.uistate.NewsListUIState
 import com.botaoap.appnews.ui.feature.newslist.uistate.RefreshNewsListUIState
 import com.botaoap.appnews.ui.feature.newslist.uistate.SelectFilterUIState
+import com.botaoap.appnews.ui.feature.newslist.uistate.ShowFooterUIState
 import com.botaoap.appnews.ui.feature.newslist.viewmodel.NewsListViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NewsListFragment : Fragment() {
 
@@ -109,6 +121,32 @@ class NewsListFragment : Fragment() {
         newsListViewModel.selectFilterState.observe(viewLifecycleOwner) { state ->
             if (state is SelectFilterUIState.Selected) {
                 newsListViewModel.getNewsList()
+            }
+        }
+
+        newsListViewModel.showFooterState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                ShowFooterUIState.Hidde -> binding.dsfLnoHomeOffersDebtFooter.visibility = View.GONE
+                ShowFooterUIState.Invisible -> binding.dsfLnoHomeOffersDebtFooter.visibility = View.GONE
+                ShowFooterUIState.Show -> {
+                    lifecycleScope.launch {
+                        binding.dsfLnoHomeOffersDebtFooter.apply {
+                            visibility = View.VISIBLE
+                            initView(
+                                data = DebtSupportModel(
+                                    title = "Saiba mais",
+                                    description = "Faltam R\$ 300,00 para receber seu auxílio. Pague suas dívidas para completar e receber!",
+                                    progressPercentage = 50,
+                                    isOpen = false,
+                                    sectionHide = SectionHideModel(
+                                        title = "Auxílio Dívida - A Serasa paga uma dívida para você!",
+                                        description = "Pague uma ou mais dívidas cujo valor total seja <b>igual ou maior que R\$ 300,00</b> e aproveite esse empurrãozinho para melhorar seu Score!"
+                                    )
+                                )
+                            )
+                        }
+                    }
+                }
             }
         }
     }

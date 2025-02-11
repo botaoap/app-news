@@ -13,6 +13,7 @@ import com.botaoap.appnews.domain.usecase.NewsListState
 import com.botaoap.appnews.ui.feature.newslist.uistate.NewsListUIState
 import com.botaoap.appnews.ui.feature.newslist.uistate.RefreshNewsListUIState
 import com.botaoap.appnews.ui.feature.newslist.uistate.SelectFilterUIState
+import com.botaoap.appnews.ui.feature.newslist.uistate.ShowFooterUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -29,6 +30,9 @@ class NewsListViewModel(
 
     private val selectFilterUIState = MutableLiveData<SelectFilterUIState>()
     val selectFilterState: LiveData<SelectFilterUIState> = selectFilterUIState
+
+    private val showFooterUIState = MutableLiveData<ShowFooterUIState>()
+    val showFooterState: LiveData<ShowFooterUIState> = showFooterUIState
 
     private var storeSources: String? = null
     private var storeCountry: String? = null
@@ -58,6 +62,7 @@ class NewsListViewModel(
                                 listOf(NewsListLoadingModel())
                             )
                         )
+                        showFooterUIState.postValue(ShowFooterUIState.Invisible)
                     }
 
                     is NewsListState.Success -> {
@@ -67,6 +72,7 @@ class NewsListViewModel(
                                 data = state.data
                             )
                         )
+                        showFooterUIState.postValue(ShowFooterUIState.Show)
                     }
 
                     NewsListState.Empty -> {
@@ -76,6 +82,7 @@ class NewsListViewModel(
                                 listOf(NewsListEmptyModel())
                             )
                         )
+                        showFooterUIState.postValue(ShowFooterUIState.Show)
                     }
 
                     NewsListState.Error -> {
@@ -85,6 +92,7 @@ class NewsListViewModel(
                                 listOf(NewsListErrorModel())
                             )
                         )
+                        showFooterUIState.postValue(ShowFooterUIState.Show)
                     }
                 }
 
